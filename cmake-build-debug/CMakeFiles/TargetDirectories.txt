@@ -1,0 +1,3 @@
+C:/Users/Erik/CLionProjects/CPrimerPlus/cmake-build-debug/CMakeFiles/CPrimerPlus.dir
+C:/Users/Erik/CLionProjects/CPrimerPlus/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Erik/CLionProjects/CPrimerPlus/cmake-build-debug/CMakeFiles/rebuild_cache.dir
