@@ -7,7 +7,7 @@
 int main(void){
     int lower, upper;
 
-    printf("Enter an lower and upper limits for the table: ");
+    printf("Enter the lower and upper limits for the table: ");
     scanf("%d%d", &lower, &upper);
     while (lower > upper){
         printf("Error! The given limit is incorrect!\n");
