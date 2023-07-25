@@ -30,6 +30,7 @@ int main(void){
     float a_cost, b_cost, c_cost;
     float cost, discount, shipping, total;
 
+    pounds = 0;
     a_pounds = b_pounds = c_pounds = 0;
     cost = discount = shipping = total = 0;
 
@@ -40,56 +41,69 @@ int main(void){
     printf("a) artichokes\n");
     printf("b) beets\n");
     printf("c) carrots\n");
-    printf("-------------------------\n");
-    printf("q) quit\n");
+    printf("q) (quit)\n");
 
-    while ((scanf("%c", &choice)) && choice != 'q'){
-        printf("Enter weight of product in pounds: ");
-        if(!scanf("%f", &pounds) || pounds < 1e-3)
-            break;
+    while ((choice = getchar()) != 'q'){
+        if (choice == '\n')
+            continue;
+        while (getchar() != '\n')
+            continue;
         switch (choice) {
             case 'a':
+                printf("Enter weight of artichokes in pounds: ");
+                if(!scanf("%f", &pounds) || pounds < 1e-3)
+                    break;
                 a_pounds += pounds;
                 break;
             case 'b':
+                printf("Enter weight of artichokes in pounds: ");
+                if(!scanf("%f", &pounds) || pounds < 1e-3)
+                    break;
                 b_pounds += pounds;
-                printf("Enter weight of beets in pounds: ");
                 break;
             case 'c':
+                printf("Enter weight of artichokes in pounds: ");
+                if(!scanf("%f", &pounds) || pounds < 1e-3)
+                    break;
                 c_pounds += pounds;
-                printf("Enter weight of carrots in pounds: ");
                 break;
             default:
-                printf("Order menu: \n");
-                printf("a) artichokes\n");
-                printf("b) beets\n");
-                printf("c) carrots\n");
-                printf("-------------------------\n");
-                printf("q) quit\n");
                 break;
         }
+
+        printf("Order menu: \n");
+        printf("a) artichokes\n");
+        printf("b) beets\n");
+        printf("c) carrots\n");
+        printf("q) (quit)\n");
     }
 
     pounds = a_pounds + b_pounds + c_pounds;
-    a_cost = a_pounds * ARTICHOKES_PRICE;
-    b_cost = b_pounds * BEETS_PRICE;
-    c_cost = c_pounds * CARROTS_PRICE;
-    cost = a_cost + b_cost + c_cost;
-    discount = cost * DISCOUNT;
-    if(pounds < 5)
-        shipping = 6.50;
-    else if(pounds >= 5 && pounds < 20)
-        shipping = 14.00;
-    else
-        shipping = 14.00 + 0.50 * (pounds - 20);
-    total = cost - discount + shipping;
-    printf("[Receipt]\n");
-    printf("Artichokes          %.2fp. x %.2f$ = %.2f$\n", a_pounds, ARTICHOKES_PRICE, a_cost);
-    printf("Beets          %.2fp. x %.2f$ = %.2f$\n", b_pounds, BEETS_PRICE, b_cost);
-    printf("Carrots          %.2fp. x %.2f$ = %.2f$\n", b_pounds, CARROTS_PRICE, c_cost);
-    printf("Cost             %.2f$\n", b_pounds, CARROTS_PRICE, c_cost);
-
-    printf("----------------------------------------------------------\n");
-
+    if(pounds > 1e-3){
+        a_cost = a_pounds * ARTICHOKES_PRICE;
+        b_cost = b_pounds * BEETS_PRICE;
+        c_cost = c_pounds * CARROTS_PRICE;
+        cost = a_cost + b_cost + c_cost;
+        discount = cost * DISCOUNT;
+        if(pounds < 5)
+            shipping = 6.50;
+        else if(pounds >= 5 && pounds < 20)
+            shipping = 14.00;
+        else
+            shipping = 14.00 + 0.50f * (pounds - 20);
+        total = cost - discount + shipping;
+        printf("[Receipt]\n");
+        printf("Artichokes\t\t\t%-6.2fp. x %.2f$ = %.2f$\n", a_pounds, ARTICHOKES_PRICE, a_cost);
+        printf("Beets\t\t\t\t%-6.2fp. x %.2f$ = %.2f$\n", b_pounds, BEETS_PRICE, b_cost);
+        printf("Carrots\t\t\t\t%-6.2fp. x %.2f$ = %.2f$\n", c_pounds, CARROTS_PRICE, c_cost);
+        printf("----------------------------------------------------------\n");
+        printf("Cost\t\t\t\t%-6.2f$\n", cost);
+        printf("Discount\t\t\t%-6.2f$\n", discount);
+        printf("Shipping\t\t\t%-6.2f$\n", shipping);
+        printf("----------------------------------------------------------\n");
+        printf("Total\t\t\t\t%-6.2f$\n", total);
+    } else{
+        printf("Your order is empty.\n");
+    }
     return 0;
 }
