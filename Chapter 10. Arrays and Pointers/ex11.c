@@ -5,17 +5,6 @@
  * doubling. Have the functions take the array name and the number of rows as arguments.
  */
 #include <stdio.h>
-<<<<<<< HEAD
-#define ROWS_SIZE 3
-#define COLS_SIZE 5
-
-int main(void)
-{
-    
-
-    return 0;
-}
-=======
 void doubl(int arr[][5], int rows);
 void printarr(int arr[][5], int rows);
 
@@ -49,4 +38,3 @@ void printarr(int arr[][5], int rows)
         printf("\b\b]\n");
     }
 }
->>>>>>> origin/main
