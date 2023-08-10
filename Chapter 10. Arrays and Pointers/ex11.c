@@ -5,6 +5,7 @@
  * doubling. Have the functions take the array name and the number of rows as arguments.
  */
 #include <stdio.h>
+<<<<<<< HEAD
 #define ROWS_SIZE 3
 #define COLS_SIZE 5
 
@@ -14,3 +15,38 @@ int main(void)
 
     return 0;
 }
+=======
+void doubl(int arr[][5], int rows);
+void printarr(int arr[][5], int rows);
+
+int main(void)
+{
+    int arr[3][5] = {{1, 0, 1, 2, 3},
+                     {0, 0, 1, 2, 1},
+                     {2, 2, 3, 4, 5}};
+    printarr(arr, 3);
+    printf("\n");
+    doubl(arr, 3);
+    printarr(arr, 3);
+    return 0;
+}
+
+void doubl(int arr[][5], int rows)
+{
+    int i, j;
+    for(i = 0; i < rows; i++)
+        for(j = 0; j < 5; j++)
+            arr[i][j] *= 2;
+}
+
+void printarr(int arr[][5], int rows)
+{
+    int i, j;
+    for(i = 0; i < rows; i++){
+        printf("[");
+        for(j = 0; j < 5; j++)
+            printf("%d, ", arr[i][j]);
+        printf("\b\b]\n");
+    }
+}
+>>>>>>> origin/main
