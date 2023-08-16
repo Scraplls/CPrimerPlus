@@ -10,7 +10,7 @@ void fetchn(char* arr, int n);
 int main(void)
 {
     int i;
-    char arr[SIZE];
+    char arr[SIZE + 1];
 
     fetchn(arr, SIZE);
 
@@ -28,4 +28,5 @@ void fetchn(char* arr, int n)
     i = 0;
     while (i < n && (ch = getchar()) != EOF)
         arr[i++] = ch;
+    arr[i] = '\0';
 }
