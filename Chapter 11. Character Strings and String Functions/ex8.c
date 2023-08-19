@@ -7,11 +7,33 @@
  * feeding to the function.
  */
 #include <stdio.h>
+#define SIZE 100
 char* string_in(char* s1, char* s2);
 
 int main(void)
 {
-    printf("Starts at %c\n", *string_in("hats", "s"));
+    char str[SIZE];
+    char in[SIZE];
+    char* at;
+
+    puts("Type any string: ");
+    gets(str);
+    while (*str != '\0' && *str != EOF)
+    {
+        puts("Enter some characters to look in a string: ");
+        gets(in);
+        if(*in == '\0' && *in == EOF)
+            break;
+        at = string_in(str, in);
+        if (at == NULL)
+            printf("%s does not contain %s\n", str, in);
+        else
+            printf("String contain %s starting at %c\n", in, *at);
+
+        puts("Type any string: ");
+        gets(str);
+    }
+
     return 0;
 }
 
@@ -19,16 +41,15 @@ char* string_in(char* s1, char* s2)
 {
     int j;
     j = 0;
-    while (*s1 != '\0')
+    while (*s1 != '\0' && *(s2 + j) != '\0')
     {
-        if(*(s2 + j) == '\0'){
-            return s1 - j;
-        }
-        else if(*s1 == *(s2 + j))
+        if(*s1 == *(s2 + j))
             j++;
         else
             j = 0;
         s1++;
     }
+    if(*(s2 + j) == '\0')
+        return s1 - j;
     return NULL;
 }
