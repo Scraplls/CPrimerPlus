@@ -7,72 +7,163 @@
  * perform the promised tasks.
  */
 #include <stdio.h>
-#define SIZE 10
-#define LEN 40
+#include <string.h>
+#include <ctype.h>
 
-void printstrs(char strs[SIZE][LEN]);
-void printascii(char strs[SIZE][LEN]);
+#define LIM 5
+#define SIZE 40
+
+char* getss(char* s, int n);
+char getchoice(void);
+void printstrs(char* s[], int n);
+void printascii(char* s[], int n);
+void printlen(char* s[], int n);
+void printfirstwrd(char* s[], int n);
+int firstwrd(char* s);
 
 int main(void)
 {
-    char list[SIZE][LEN];
-    int i, choice;
-    i = 0;
+    char str[LIM][SIZE];
+    char* sptr[LIM];
+    int row = 0;
+    char choice;
 
-    puts("Enter a string to work with: ");
-    while (gets(list[i]) != NULL && i < SIZE)
+    printf("Enter up to %d strings to work with:\n", LIM);
+    while (row < LIM && getss(str[row], SIZE) != NULL)
     {
-        i++;
-        puts("Enter a string to work with: ");
+        sptr[row] = str[row];
+        row++;
     }
-
-    printf("Menu selection: \n"
-           "1. Print list of strings\n"
-           "2. Print list in ASCII order\n"
-           "3. Print list in order of increasing length\n"
-           "4. Print list in order of first word\n"
-           "5. Quit");
-    scanf("%d", &choice);
-    while (choice != 5)
+    while((choice = getchoice()) != 'q')
     {
+        printf("\n");
         switch (choice)
         {
-            case 1:
-                printstrs(list);
+            case 'a': printstrs(sptr, row);
                 break;
-            case 2:
-                printascii(list);
+            case 'b':
+                printascii(sptr, row);
                 break;
-            case 3:
-                printlen(list);
+            case 'c':
+                printlen(sptr, row);
                 break;
-            case 4:
-                printfirst(list);
+            case 'd':
+                printfirstwrd(sptr, row);
                 break;
             default:
                 break;
         }
-        printf("Menu selection: \n"
-               "1. Print list of strings\n"
-               "2. Print list in ASCII order\n"
-               "3. Print list in order of increasing length\n"
-               "4. Print list in order of first word\n"
-               "5. Quit");
-        scanf("%d", &choice);
+        printf("\n");
     }
-    puts("Done!");
+    printf("Done.\n");
+
     return 0;
 }
 
-void printstrs(char strs[SIZE][LEN])
+char getchoice(void)
 {
-    int i;
-    i = 0;
-    while (i < SIZE)
-        puts(strs[i++]);
+    char ch;
+
+    printf("a) print the sourse strings.        b) print in order of ASCII.\n");
+    printf("c) print in order of length.        d) print in order of the first word's length.\n");
+    printf("q) quit.\n");
+    printf("Enter a character (a, b, c, d or q):");
+    ch = getchar();
+    while (getchar() != '\n')
+        continue;
+    while (ch < 'a' || ch > 'd' && ch != 'q')
+    {
+        printf("Please enter the right option (a, b, c, d or q): ");
+        ch = getchar();
+        while (getchar() != '\n')
+            continue;
+    }
+    return ch;
 }
 
-void printascii(char strs[SIZE][LEN])
+void printstrs(char* s[], int n)
 {
-    
+    int i;
+
+    for (i = 0; i < n; i++)
+        puts(s[i]);
+}
+
+void printascii(char* s[], int n)
+{
+    int i, j;
+    char * temp;
+
+    for (i = 0; i < n - 1; i++)
+        for (j = i + 1; j < n; j++)
+            if (strcmp(s[i], s[j]) > 0)
+            {
+                temp = s[j];
+                s[j] = s[i];
+                s[i] = temp;
+            }
+    printstrs(s, n);
+}
+
+void printlen(char* s[], int n)
+{
+    int i, j;
+    char * temp;
+
+    for (i = 0; i < n - 1; i++)
+        for (j = i + 1; j < n; j++)
+            if (strlen(s[i]) > strlen(s[j]))
+            {
+                temp = s[j];
+                s[j] = s[i];
+                s[i] = temp;
+            }
+    printstrs(s, n);
+}
+
+void printfirstwrd(char* s[], int n)
+{
+    int i, j;
+    char * temp;
+
+    for (i = 0; i < n - 1; i++)
+        for (j = i + 1; j < n; j++)
+            if (firstwrd(s[i]) > firstwrd(s[j]))
+            {
+                temp = s[j];
+                s[j] = s[i];
+                s[i] = temp;
+            }
+    printstrs(s, n);
+}
+
+int firstwrd(char* s)
+{
+    int i = 0;
+    int count = 0;
+
+    while (!isalpha(s[i]))
+        i++;
+    while (isalpha(s[i]))
+    {
+        i++;
+        count++;
+    }
+
+    return count;
+}
+
+char* getss(char* s, int n)
+{
+    int i = 0;
+    if (fgets(s, n, stdin) != NULL)
+    {
+        while (s[i] != '\n' && s[i] != '\0')
+            i++;
+        if (s[i] == '\n')
+            s[i] = '\0';
+        return s;
+    }
+    else
+        return NULL;
 }
