@@ -2,7 +2,7 @@
  * Redo Programming Exercise 8, but this time use a recursive function.
  */
 #include <stdio.h>
-double power(double n, int p);
+double power(double base, int p);
 
 int main(void){
     double x, xpow;

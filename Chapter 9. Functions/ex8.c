@@ -7,7 +7,7 @@
  * Test the function in a program.
  */
 #include <stdio.h>
-double power(double n, int p);
+double power(double base, int p);
 
 int main(void){
     double x, xpow;
