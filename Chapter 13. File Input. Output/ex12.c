@@ -14,15 +14,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define ROWS 20
-#define COLUMNS 30
+#define COLS 30
 
 int main(int argc, char *argv[])
 {
     int i, j;
     int ch;
     FILE *in, *out;
-    int digits[ROWS][COLUMNS];
-    char picture[ROWS][COLUMNS+1];
+    int digits[ROWS][COLS];
+    char picture[ROWS][COLS + 1];
     char signs[10] = {' ', '.', '\'', ':', '~', '*', '=', '$', '%', '#'};
 
     if (argc < 3)
@@ -45,13 +45,13 @@ int main(int argc, char *argv[])
     i = 0;
     while (fscanf(in, "%d", &ch) != EOF)
     {
-        digits[i / COLUMNS][i % COLUMNS] = ch;
+        digits[i / COLS][i % COLS] = ch;
         i++;
     }
 
     for(i = 0; i < ROWS; i++)
     {
-        for(j = 0; j < COLUMNS; j++)
+        for(j = 0; j < COLS; j++)
             picture[i][j] = signs[digits[i][j]];
         picture[i][j] = '\0';
     }

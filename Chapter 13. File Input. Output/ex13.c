@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
     int i, j;
     int ch;
-    int first_line, lastrow_cols;
+    int first_row, lastncols;
     FILE *in, *out;
     int rows, cols;
     char signs[10] = {' ', '.', '\'', ':', '~', '*', '=', '$', '%', '#'};
@@ -33,24 +33,24 @@ int main(int argc, char *argv[])
     }
 
     rows = 0;
-    first_line = 1;
+    first_row = 1;
     while ((ch = getc(in)) != EOF && isdigit(ch))
     {
         cols = 1;
         while ((ch = getc(in)) != EOF && ch != '\n')
             if (isdigit(ch))
                 cols++;
-        if (first_line)
-            first_line = 0;
+        if (first_row)
+            first_row = 0;
         else
         {
-            if (cols != lastrow_cols)
+            if (cols != lastncols)
             {
                 fprintf(stderr, "Invalid input: array should have the same number of digits on each line!\n");
                 exit(EXIT_FAILURE);
             }
         }
-        lastrow_cols = cols;
+        lastncols = cols;
         rows++;
     }
     if (cols == 0)
