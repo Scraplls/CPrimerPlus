@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/polkael/CLionProjects/CPrimerPlus/main.c" "CMakeFiles/CPrimerPlus.dir/main.c.obj" "gcc" "CMakeFiles/CPrimerPlus.dir/main.c.obj.d"
+  "C:/Users/PolkaEL/CLionProjects/CPrimerPlus/main.c" "CMakeFiles/CPrimerPlus.dir/main.c.obj" "gcc" "CMakeFiles/CPrimerPlus.dir/main.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -3,7 +3,7 @@
  * whitespace character encountered. Test it in a simple program.
  */
 #include <stdio.h>
-char get_choice(void);
+char getchoice(void);
 char get_first(void);
 int get_int(void);
 void count(void);
@@ -11,7 +11,7 @@ int main(void)
 {
     int choice;
     void count(void);
-    while ( (choice = get_choice()) != 'q')
+    while ((choice = getchoice()) != 'q')
     {
         switch (choice)
         {
@@ -38,7 +38,7 @@ void count(void)
     while ( getchar() != '\n')
         continue;
 }
-char get_choice(void)
+char getchoice(void)
 {
     int ch;
     printf("Enter the letter of your choice:\n");
