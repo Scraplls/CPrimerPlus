@@ -64,11 +64,7 @@ int main(int argc, char* argv[])
 
     struct player players[MAXPLAYERS];
     for(i = 0; i < MAXPLAYERS; i++)
-    {
-        players[i].time = players[i].hits = players[i].walks = players[i].runs = players[i].avg = 0;
-        strcpy(players[i].fname, "");
-        strcpy(players[i].lname, "");
-    }
+        players[i] = (struct player) {"", "", 0, 0, 0, 0, 0};
 
     i = -1;
     while ((read = fscanf(fp, "%d %s %s %f %f %f %f", &i, fname, lname, &time, &hits, &walks, &runs)) != EOF && read == 7)
