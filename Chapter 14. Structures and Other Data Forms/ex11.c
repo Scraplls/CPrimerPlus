@@ -20,36 +20,81 @@
 void fillarr(double arr[], int n);
 void showarr(double arr[], int n);
 void transform(const double source[], double target[], int n, double (*fp)(double));
-double rem(double x);
+double inverse(double x);
 double fibb(double x);
 
 int main(void)
 {
-    int choice;
+    char choice;
     int filled;
 
     double source[100];
     double target[100];
 
+    printf("Source array address: %p\n", source);
+    printf("Target array address: %p\n", target);
     printf("===Transformation program===\n"
            "To choose a function, enter its letter label:\n"
            "a) random fill an array\n"
            "b) transform an array\n"
+           "c) show source array\n"
            "q) quit\n");
     while ((choice = getchar()) != 'q' && choice != EOF)
     {
+        while (getchar() != '\n')
+            continue;
         switch (choice) {
             case 'a':
                 fillarr(source, 100);
-                printf("Source array: ");
+                filled = 1;
                 showarr(source, 100);
-                printf("\n");
                 break;
             case 'b':
-                printf("Select a function to perform array transformation: "
-                       "a) sin  b) cos\n"
-                       "c) ");
+                if(!filled)
+                {
+                    printf("Transformation failed! Array is empty!\n");
+                    break;
+                }
+                printf("Select a function to transform the array: \n"
+                       "a) sin  b) log\n"
+                       "c) inverse  d) fibb\n");
+                choice = getchar();
+                while (getchar() != '\n')
+                    continue;
+                switch (choice) {
+                    case 'a':
+                        transform(source, target, 100, sin);
+                        showarr(target, 100);
+                        break;
+                    case 'b':
+                        transform(source, target, 100, log);
+                        showarr(target, 100);
+                        break;
+                    case 'c':
+                        transform(source, target, 100, inverse);
+                        showarr(target, 100);
+                        break;
+                    case 'd':
+                        transform(source, target, 100, fibb);
+                        showarr(target, 100);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 'c':
+                showarr(source, 100);
+                break;
+            default:
+                printf("Selected function was not found! Try again!\n");
+                break;
         }
+        printf("===Transformation program===\n"
+               "To choose a function, enter its letter label:\n"
+               "a) random fill an array\n"
+               "b) transform an array\n"
+               "c) show source array\n"
+               "q) quit\n");
     }
     return 0;
 }
@@ -61,22 +106,30 @@ void fillarr(double arr[], int n)
     printf("Enter a seed number: ");
     while ((read = scanf("%u", &seed)) != 1 && read != EOF)
         printf("Invalid input!\nRe-enter a seed number: ");
+    while (getchar() != '\n')
+        continue;
     srand(seed);
     for(int i = 0; i < n; i++)
-        arr[i] = rand() % 10 + rand() % 10 / rand() % 10;
+        arr[i] = (rand() % 10) + (rand() % 10) * 1.0 / (rand() % 10 + 1);
 }
 
 void showarr(double arr[], int n)
 {
-    printf("[");
-    for (int i = 0; i < n; ++i)
-        printf("%.2f, ", arr[i]);
-    printf("\b\b]");
+    int i;
+    printf("Array %p: \n", arr);
+    for (i = 0; i < n; ++i)
+    {
+        printf("%.2f ", arr[i]);
+        if(i % 10 == 9)
+            printf("\n");
+    }
+    if(i % 10 == 9)
+        printf("\n");
 }
 
-double rem(double x)
+double inverse(double x)
 {
-    return x - (int) x;
+    return 1.0 / x;
 }
 
 double fibb(double x)
@@ -95,4 +148,10 @@ double fibb(double x)
     }
 
     return f;
+}
+
+void transform(const double source[], double target[], int n, double (*fp)(double))
+{
+    for (int i = 0; i < n; ++i)
+        target[i] = fp(source[i]);
 }
