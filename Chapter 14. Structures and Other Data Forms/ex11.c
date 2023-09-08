@@ -119,7 +119,7 @@ void showarr(double arr[], int n)
     printf("Array %p: \n", arr);
     for (i = 0; i < n; ++i)
     {
-        printf("%.2f ", arr[i]);
+        printf("%-6.2f ", arr[i]);
         if(i % 10 == 9)
             printf("\n");
     }
