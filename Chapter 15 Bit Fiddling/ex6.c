@@ -3,7 +3,11 @@
 #include <stdio.h>
 
 #define ID_MASK 255
-#define SIZE_MASK
+#define SIZE_MASK 127
+
+enum ALIGNMENT {
+    LEFT, CENTER, RIGHT
+};
 
 struct font
 {
@@ -16,12 +20,9 @@ struct font
 };
 
 void printsettings(struct font *settings);
-void changefont(struct font settings);
-void changesize(struct font settings);
-void changealignment(struct font settings);
-void togglebold(struct font settings);
-void toggleitalic(struct font settings);
-void toggleunderline(struct font settings);
+void changefont(struct font *settings);
+void changesize(struct font *settings);
+void changealignment(struct font *settings);
 
 int main(void)
 {
@@ -38,40 +39,78 @@ int main(void)
             continue;
         switch (ch) {
             case 'f':
-                changefont(settings);
+                changefont(&settings);
                 break;
             case 's':
-                changesize(settings);
+                changesize(&settings);
                 break;
             case 'a':
-                changealignment(settings);
+                changealignment(&settings);
                 break;
             case 'b':
-                togglebold(settings);
+                settings.bold = ~settings.bold;
                 break;
             case 'i':
-                toggleitalic(settings);
+                settings.italic = ~settings.italic;
                 break;
             case 'u':
-                toggleunderline(settings);
+                settings.underline = ~settings.underline;
                 break;
             default:
                 break;
         }
+        printsettings(&settings);
+        printf("f)change font   s)change size   a)change alignment\n"
+               "b)toggle bold   i)toggle italic u)toggle underline\n"
+               "q)quit\n");
     }
-
+    printf("Bye!\n");
     return 0;
 }
 
-void changefont(struct font settings)
+void changefont(struct font *settings)
 {
-    int id;
+    unsigned int id;
     printf("Enter font ID (0-255): ");
-    scanf("%d", &id);
-
+    scanf("%ud", &id);
+    while (getchar() != '\n')
+        continue;
+    settings->font_id = id & ID_MASK;
 }
 
+void changesize(struct font *settings)
+{
+    unsigned int size;
+    printf("Enter font size (0-127): ");
+    scanf("%ud", &size);
+    while (getchar() != '\n')
+        continue;
+    settings->font_size = size & SIZE_MASK;
+}
 
+void changealignment(struct font *settings)
+{
+    char ch;
+    printf("Select alignment: \n"
+           "l)left c)center r)right\n");
+    ch = getchar();
+    while (getchar() != '\n')
+        continue;
+    switch (ch) {
+        case 'l':
+            settings->alignment = LEFT;
+            break;
+        case 'c':
+            settings->alignment = CENTER;
+            break;
+        case 'r':
+            settings->alignment = RIGHT;
+            break;
+        default:
+            printf("Invalid alignment!\n");
+            break;
+    }
+}
 
 void printsettings(struct font *settings)
 {
