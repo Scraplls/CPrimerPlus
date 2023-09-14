@@ -9,8 +9,8 @@
  *  b. The program displays the following menu:
  *   To choose a function, enter its letter label:
  *   a) Show number of empty seats
- *   b) Show ex2_list of empty seats
- *   c) Show alphabetical ex2_list of seats
+ *   b) Show list of empty seats
+ *   c) Show alphabetical list of seats
  *   d) Assign a customer to a seat assignment
  *   e) Delete a seat assignment
  *   f) Quit
@@ -81,8 +81,8 @@ int main(int argc, char *argv[])
     printf("===The Colossus Airlines fleet===\n");
     printf("To choose a function, enter its letter label:\n"
            "a) Show number of empty seats\n"
-           "b) Show ex2_list of empty seats\n"
-           "c) Show alphabetical ex2_list of seats\n"
+           "b) Show list of empty seats\n"
+           "c) Show alphabetical list of seats\n"
            "d) Assign a customer to a seat assignment\n"
            "e) Delete a seat assignment\n"
            "f) Quit\n");
@@ -112,8 +112,8 @@ int main(int argc, char *argv[])
         }
         printf("To choose a function, enter its letter label:\n"
                "a) Show number of empty seats\n"
-               "b) Show ex2_list of empty seats\n"
-               "c) Show alphabetical ex2_list of seats\n"
+               "b) Show list of empty seats\n"
+               "c) Show alphabetical list of seats\n"
                "d) Assign a customer to a seat assignment\n"
                "e) Delete a seat assignment\n"
                "f) Quit\n");

@@ -1,5 +1,5 @@
 /* C Primer Plus. Programming Exercise 12.5
- * Write a program that generates a ex2_list of 100 random numbers in the range 1–10
+ * Write a program that generates a list of 100 random numbers in the range 1–10
  * in sorted decreasing order. (You can adapt the sorting algorithm from Chapter 11
  * to type int. In this case, just sort the numbers themselves.)
  */

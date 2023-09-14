@@ -1,6 +1,6 @@
 /* C Primer Plus. Programming Exercise 17.1
- * Modify Listing 17.2 so that it displays the movie ex2_list both in the original order and in
- * reverse order. One approach is to modify the linked-ex2_list definition so that the ex2_list can be
+ * Modify Listing 17.2 so that it displays the movie list both in the original order and in
+ * reverse order. One approach is to modify the linked-list definition so that the list can be
  * traversed in both directions. Another approach is to use recursion.
  */
 #include <stdio.h>
@@ -13,7 +13,7 @@ struct film {
     char title[TSIZE];
     int rating;
     struct film * prev;
-    struct film * next; /* points to next struct in ex2_list */
+    struct film * next; /* points to next struct in list */
 };
 
 char * s_gets(char * st, int n);
@@ -46,12 +46,12 @@ int main(void)
         prev = current;
     }
 
-/* Show ex2_list of movies in both directions */
+/* Show list of movies in both directions */
     if (head == NULL)
         printf("No data entered. ");
     else
     {
-        printf("Here is the movie ex2_list:\n");
+        printf("Here is the movie list:\n");
 
         current = head;
         while (current->next != NULL)
@@ -63,7 +63,7 @@ int main(void)
         printf("Movie: %s Rating: %d\n",
                current->title, current->rating);
 
-        printf("Here is the movie reversed ex2_list:\n");
+        printf("Here is the movie reversed list:\n");
         printf("Movie: %s Rating: %d\n",
                current->title, current->rating);
         current = current->prev;

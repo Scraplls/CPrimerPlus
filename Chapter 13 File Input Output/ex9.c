@@ -1,6 +1,6 @@
 /* C Primer Plus. Programming Exercise 13.9
  * Modify the program in Listing 13.3 so that each word is numbered according to the order
- * in which it was added to the ex2_list, starting with 1. Make sure that, when the program is
+ * in which it was added to the list, starting with 1. Make sure that, when the program is
  * run a second time, new word numbering resumes where the previous numbering left off.
  */
 #include <stdio.h>
