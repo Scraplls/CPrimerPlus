@@ -86,7 +86,7 @@ int main(void)
     }
     if (count > 0)
     {
-        puts("Here is the list of your books:");
+        puts("Here is the ex2_list of your books:");
         for (index = 0; index < count; index++)
             printf("%s by %s: $%.2f\n",library[index].title,
                    library[index].author, library[index].value);

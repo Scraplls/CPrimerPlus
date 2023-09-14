@@ -1,6 +1,6 @@
 /* C Primer Plus. Programming Exercise 11.11
  * Write a program that reads in up to 10 strings or to EOF, whichever comes first. Have it
- * offered the user a menu with five choices: print the original list of strings, print the strings
+ * offered the user a menu with five choices: print the original ex2_list of strings, print the strings
  * in ASCII collating sequence, print the strings in order of increasing length, print the
  * strings in order of the length of the first word in the string, and quit. Have the menu
  * recycle until the user enters the quit request. The program, of course, should actually

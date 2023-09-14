@@ -35,7 +35,7 @@ int main(void)
     puts("List of staff:");
     showarray(staff, MAXSTAFF);
     qsort(staff, MAXSTAFF, sizeof(names), mycomp);
-    puts("\nSorted list:");
+    puts("\nSorted ex2_list:");
     showarray(staff, MAXSTAFF);
     return 0;
 }

@@ -158,8 +158,8 @@ void printseatmenu(void)
 {
     printf("To choose a function, enter its letter label:\n"
            "a) Show number of empty seats\n"
-           "b) Show list of empty seats\n"
-           "c) Show alphabetical list of seats\n"
+           "b) Show ex2_list of empty seats\n"
+           "c) Show alphabetical ex2_list of seats\n"
            "d) Assign a customer to a seat assignment\n"
            "e) Delete a seat assignment\n"
            "f) Confirm a seat assignment\n"
