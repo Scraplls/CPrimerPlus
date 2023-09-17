@@ -63,8 +63,6 @@ bool is_in_array(const int sorted[], int n, int seek)
     return sorted[left] == seek;
 }
 
-
-
 int compare_ints(const void* a, const void* b)
 {
     int arg1 = *(const int*)a;

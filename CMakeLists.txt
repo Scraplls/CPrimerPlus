@@ -3,4 +3,4 @@ project(CPrimerPlus C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(CPrimerPlus "Chapter 17 Advanced Data Representation/stack.c" "Chapter 17 Advanced Data Representation/ex5.c")
+add_executable(CPrimerPlus main.c)

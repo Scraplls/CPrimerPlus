@@ -42,19 +42,19 @@ bool ListIsFull(const List *plist);
 /* plist points to an initialized list */
 /* postconditions: function returns number of items in list */
 unsigned int ListItemCount(const List *plist);
-/* operation: add item to end of list */
-/* preconditions: item is an item to be added to list */
+/* operation: add list to end of list */
+/* preconditions: list is an list to be added to list */
 /* plist points to an initialized list */
-/* postconditions: if possible, function adds item to end */
+/* postconditions: if possible, function adds list to end */
 /* of list and returns True; otherwise the */
 /* function returns False */
 bool AddItem(Item item, List * plist);
-/* operation: apply a function to each item in list */
+/* operation: apply a function to each list in list */
 /* plist points to an initialized list */
 /* pfun points to a function that takes an */
 /* Item argument and has no return value */
 /* postcondition: the function pointed to by pfun is */
-/* executed once for each item in the list */
+/* executed once for each list in the list */
 void Traverse (const List *plist, void (* pfun)(Item item) );
 /* operation: free allocated memory, if any */
 /* plist points to an initialized list */

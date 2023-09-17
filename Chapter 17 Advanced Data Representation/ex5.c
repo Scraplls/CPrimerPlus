@@ -6,7 +6,7 @@
  */
 #include <stdio.h>
 #include <string.h>
-#include "stack.h"
+#include "ex5_stack.h"
 
 #define STRLEN 40
 char * s_gets(char *, int);

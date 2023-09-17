@@ -29,7 +29,7 @@ unsigned int ListItemCount(const List * plist)
 {
     return plist->items;
 }
-/* assign item to a current free position in list*/
+/* assign list to a current free position in list*/
 /* the list pointed to by plist (fast implementation) */
 bool AddItem(Item item, List * plist)
 {
@@ -40,9 +40,9 @@ bool AddItem(Item item, List * plist)
     plist->items++;
     return true;
 }
-/* visit each item and execute function pointed to by pfun */
+/* visit each list and execute function pointed to by pfun */
 void Traverse (const List * plist, void (* pfun)(Item item) )
 {
     for (int index = 0; index < plist->items; index++)
-        (*pfun)(plist->entries[index]); /* apply function to item */
+        (*pfun)(plist->entries[index]); /* apply function to list */
 }

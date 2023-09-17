@@ -1,7 +1,7 @@
 /* queue.c -- the Queue type implementation*/
 #include <stdio.h>
 #include <stdlib.h>
-#include "stack.h"
+#include "ex5_stack.h"
 /* local functions */
 static void CopyToNode(Item item, Node * pn);
 static void CopyToItem(Node * pn, Item * pi);
@@ -48,7 +48,7 @@ bool Push(Item item, Stack * ps)
     else
         pnew->next = ps->top; /* link at top of stack */
     ps->top = pnew; /* record location of top */
-    ps->items++; /* one more item in stack */
+    ps->items++; /* one more list in stack */
     return true;
 }
 bool Pop(Item * pitem, Stack * ps)

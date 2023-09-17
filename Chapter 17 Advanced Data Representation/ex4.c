@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h> // for rand() and srand()
 #include <time.h> // for time()
-#include "queue.h" // change Item typedef
+#include "ex4_queue.h" // change Item typedef
 #define MIN_PER_HR 60.0
 bool newcustomer(double x); // is there a new customer?
 Item customertime(long when); // set customer parameters

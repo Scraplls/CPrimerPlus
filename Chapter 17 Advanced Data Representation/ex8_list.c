@@ -1,7 +1,5 @@
-/* list.c -- functions supporting list operations */
-#include <stdio.h>
 #include <stdlib.h>
-#include "ex2_list.h"
+#include "ex8_list.h"
 /* local function prototype */
 static void CopyToNode(Item item, Node * pnode);
 /* interface functions */
@@ -46,7 +44,7 @@ unsigned int ListItemCount(const List * plist)
 }
 /* creates node to hold list and adds it to the end of */
 /* the list pointed to by plist (slow implementation) */
-bool AddItem(Item item, List * plist)
+bool AddItemToList(Item item, List * plist)
 {
     Node * pnew;
     Node * scan = plist->head;
@@ -63,8 +61,33 @@ bool AddItem(Item item, List * plist)
 
     return true;
 }
+
+bool DeleteItemFromList(Item item, List * plist, int (*pEqual) (Item, Item))
+{
+    Node * scan = plist->head;
+    if (scan == NULL)
+        return false;
+    if (pEqual(item, scan->item))
+    {
+        EmptyTheList(plist);
+        return true;
+    }
+
+    while (scan->next != NULL)
+    {
+        if (pEqual(item, scan->next->item))
+        {
+            scan->next = scan->next->next;
+            break;
+        }
+        scan = scan->next;
+    }
+
+    return true;
+}
+
 /* visit each node and execute function pointed to by pfun */
-void Traverse (const List * plist, void (* pfun)(Item item) )
+void TraverseList(const List * plist, void (* pfun)(Item item) )
 {
     Node * pnode = plist->head; /* set to start of list */
     while (pnode != NULL)

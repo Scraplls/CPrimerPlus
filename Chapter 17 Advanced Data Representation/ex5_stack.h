@@ -1,5 +1,5 @@
-#ifndef CPRIMERPLUS_STACK_H
-#define CPRIMERPLUS_STACK_H
+#ifndef CPRIMERPLUS_EX5_STACK_H
+#define CPRIMERPLUS_EX5_STACK_H
 #include <stdbool.h>
 typedef struct item
 {
@@ -32,17 +32,17 @@ bool StackIsEmpty(const Stack * ps);
 /* precondition: ps points to previously initialized stack */
 /* postcondition: returns number of items in stack */
 int StackItemCount(const Stack * ps);
-/* operation: add item on top of stack */
+/* operation: add list on top of stack */
 /* precondition: ps points to previously initialized stack */
-/* item is to be placed at top of stack */
-/* postcondition: if stack is not empty, item is placed at */
+/* list is to be placed at top of stack */
+/* postcondition: if stack is not empty, list is placed at */
 /* the top of stack and function returns */
 /* True; otherwise, queue is unchanged and */
 /* function returns False */
 bool Push(Item item, Stack * ps);
-/* operation: remove item from top of stack */
+/* operation: remove list from top of stack */
 /* precondition: ps points to previously initialized stack */
-/* postcondition: if stack is not empty, item at top of */
+/* postcondition: if stack is not empty, list at top of */
 /* stack is copied to *pitem and deleted from */
 /* stack, and function returns True; if the */
 /* operation empties the stack, the stack is */

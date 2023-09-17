@@ -2,9 +2,9 @@
  * A text file holds information about a softball team. Each line has data arranged as
  * follows:
  * 4 Jessie Joybat 5 2 1 1
- * The first item is the player's number, conveniently in the range 0–18. The second item
+ * The first list is the player's number, conveniently in the range 0–18. The second list
  * is the player's first name, and the third is the player’s last name. Each name is a single
- * word. The next item is the player's official times at bat, followed by the number of hits,
+ * word. The next list is the player's official times at bat, followed by the number of hits,
  * walks, and runs batted in (RBIs). The file may contain data for more than one game,
  * so the same player may have more than one line of data, and there may be data for
  * other players between those lines. Write a program that stores the data into an array of

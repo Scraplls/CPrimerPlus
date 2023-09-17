@@ -7,3 +7,78 @@
  * occurred in the file. The third choice is to quit.
  */
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include "ex7_tree.h"
+
+void printword(Item * item);
+
+int main(int argc, char * argv[])
+{
+    Tree wtree;
+    FILE * fp;
+    char* buffer;
+    long fsize;
+    char ch;
+    int i;
+
+    if(argc < 2)
+    {
+        fprintf(stderr, "Usage: %s file", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+    if ((fp = fopen(argv[1], "rb")) == NULL)
+    {
+        printf("Can't open %s\n", argv[1]);
+        exit(EXIT_FAILURE);
+    }
+    fseek(fp, 0L, SEEK_END);
+    fsize = ftell(fp);
+    fclose(fp);
+    buffer = (char *) malloc(fsize * sizeof(char));
+
+    if ((fp = fopen(argv[1], "r")) == NULL)
+    {
+        printf("Can't open %s\n", argv[1]);
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Reading words from file...");
+
+    InitializeTree(&wtree);
+    ch = 0;
+    while (ch != EOF)
+    {
+        while (!isalnum(ch = fgetc(fp)))
+            continue;
+        if(ch == EOF)
+            break;
+
+        char * word;
+        i = 0;
+        buffer[i++] = ch;
+        while (isalnum(ch = fgetc(fp)) && ch != EOF)
+            buffer[i++] = ch;
+
+        word = (char * ) malloc((i + 1) * sizeof(char));
+        strncpy(word, buffer, i);
+        AddItem(&(Item){word, 1}, &wtree);
+        word[i] = '\0';
+    }
+
+    printf("Successfully!\n");
+
+    printf("Here's all word occurrences in file: \n");
+    Traverse(&wtree, printword);
+
+    DeleteAll(&wtree);
+    free(buffer);
+    fclose(fp);
+    return 0;
+}
+
+void printword(Item * item)
+{
+    printf("%s - %d times\n", item->word, item->count);
+}

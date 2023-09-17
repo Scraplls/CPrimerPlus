@@ -1,5 +1,5 @@
-#ifndef CPRIMERPLUS_QUEUE_H
-#define CPRIMERPLUS_QUEUE_H
+#ifndef CPRIMERPLUS_EX4_QUEUE_H
+#define CPRIMERPLUS_EX4_QUEUE_H
 #include <stdbool.h>
 typedef struct item
 {
@@ -34,17 +34,17 @@ bool QueueIsEmpty(const Queue *pq);
 /* precondition: pq points to previously initialized queue */
 /* postcondition: returns number of items in queue */
 int QueueItemCount(const Queue * pq);
-/* operation: add item to rear of queue */
+/* operation: add list to rear of queue */
 /* precondition: pq points to previously initialized queue */
-/* item is to be placed at rear of queue */
-/* postcondition: if queue is not empty, item is placed at */
+/* list is to be placed at rear of queue */
+/* postcondition: if queue is not empty, list is placed at */
 /* rear of queue and function returns */
 /* True; otherwise, queue is unchanged and */
 /* function returns False */
 bool EnQueue(Item item, Queue * pq);
-/* operation: remove item from front of queue */
+/* operation: remove list from front of queue */
 /* precondition: pq points to previously initialized queue */
-/* postcondition: if queue is not empty, item at head of */
+/* postcondition: if queue is not empty, list at head of */
 /* queue is copied to *pitem and deleted from */
 /* queue, and function returns True; if the */
 /* operation empties the queue, the queue is */

@@ -1,7 +1,7 @@
 /* queue.c -- the Queue type implementation*/
 #include <stdio.h>
 #include <stdlib.h>
-#include "queue.h"
+#include "ex4_queue.h"
 /* local functions */
 static void CopyToNode(Item item, Node * pn);
 static void CopyToItem(Node * pn, Item * pi);
@@ -36,11 +36,11 @@ bool EnQueue(Item item, Queue * pq)
     CopyToNode(item, pnew);
     pnew->next = NULL;
     if (QueueIsEmpty(pq))
-        pq->front = pnew; /* item goes to front */
+        pq->front = pnew; /* list goes to front */
     else
         pq->rear->next = pnew; /* link at end of queue */
     pq->rear = pnew; /* record location of end */
-    pq->items++; /* one more item in queue */
+    pq->items++; /* one more list in queue */
     return true;
 }
 bool DeQueue(Item * pitem, Queue * pq)
